@@ -1,0 +1,30 @@
+.tray-button {
+	float: right;
+	color: white;
+	background-color: #58779D;
+	transition: 0.2s ease;
+	border: none;
+  	-webkit-app-region: no-drag;
+  	margin-left: 3px;
+  	outline: none;
+  	border-radius: 50%;
+}
+
+.tray-button:hover {
+	background-color: black;
+}
+
+#video {
+	overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+#video webview {
+	left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}

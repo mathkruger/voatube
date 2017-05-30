@@ -1,0 +1,21 @@
+{
+  "name": "VoaTube",
+  "description": "Assistidor de youtube sempre no topo",
+  "manifest_version": 2,
+  "minimum_chrome_version": "23",
+  "version": "0.1",
+  "offline_enabled": false,
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  },
+  "permissions" : [
+    "alwaysOnTopWindows",
+    "webview"
+  ],
+  "icons": {
+    "16": "assets/icon.png",
+    "128": "assets/icon.png"
+  }
+}

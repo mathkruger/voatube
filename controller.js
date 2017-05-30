@@ -1,14 +1,13 @@
 $(document).ready(function () {
     $("#error-container").hide();
+
 	function openVideo(link){
 		var videoId = link.split('=')[1];
         var videoURL = link.split('=')[0];
 
         if(videoURL.indexOf('youtube') !== -1){
             $("#error-container").hide();
-
-            var html = '<webview width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1"></webview>';
-            document.getElementById('video').innerHTML = html;
+            document.getElementById('video_youtube').src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
         }
         else{
             $("#error-container").show();

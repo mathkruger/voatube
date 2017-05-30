@@ -12,7 +12,8 @@
   },
   "permissions" : [
     "alwaysOnTopWindows",
-    "webview"
+    "webview",
+    "fullscreen"
   ],
   "icons": {
     "16": "assets/icon.png",

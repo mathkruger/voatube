@@ -1,5 +1,11 @@
+body {
+  background-color: black;
+}
+
 .tray-button {
 	float: right;
+    width: 32px;
+    height: 32px;
 	color: white;
 	background-color: #58779D;
 	transition: 0.2s ease;

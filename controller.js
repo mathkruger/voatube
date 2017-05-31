@@ -33,7 +33,13 @@ var VoaApp;
             VoaApp.videoYoutube.src = "https://www.youtube.com/embed/" + result[2] + "?autoplay=1";
         }
         else {
-            VoaApp.error.style.display = 'block';
+            if(link.indexOf('twitch.tv') !== -1){
+                var channelTwitch = link.split('/').pop();
+                VoaApp.videoYoutube.src = "http://player.twitch.tv/?channel=" + channelTwitch;
+            }
+            else{
+                VoaApp.error.style.display = 'block';
+            }
         }
     }
 

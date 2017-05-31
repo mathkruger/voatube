@@ -1,25 +1,44 @@
-$(document).ready(function () {
-    $("#error-container").hide();
+var VoaApp;
 
-	function openVideo(link){
-		var videoId = link.split('=')[1];
-        var videoURL = link.split('=')[0];
+(function($,VoaApp){
+    VoaApp = {
+        error        : $("#error-container"),
+        videoYoutube : document.getElementById('video_youtube'),
+        formVideo    : $("#videoSubmit"),
+        inputLink    : $("#link"),
+        close        : $("#close")
+    };
 
-        if(videoURL.indexOf('youtube') !== -1){
-            $("#error-container").hide();
-            document.getElementById('video_youtube').src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+    VoaApp.listen = function() {
+        VoaApp.formVideo.submit(function(e){
+            e.preventDefault();
+            openVideo(VoaApp.inputLink.val());
+        });
+
+        VoaApp.close.click(function() {
+            window.close();
+        });
+    };
+
+    VoaApp.init = function() {
+        VoaApp.listen();
+    };
+
+    function openVideo(link){
+        var regexYoutube = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var result = link.match(regexYoutube);
+
+        if (result && result[2].length == 11) {
+            VoaApp.error.hide();
+            VoaApp.videoYoutube.src = "https://www.youtube.com/embed/" + result[2] + "?autoplay=1";
         }
-        else{
-            $("#error-container").show();
+        else {
+            VoaApp.error.show();
         }
-  	}
+    }
 
-  	$("#videoSubmit").submit(function(e){
-        e.preventDefault();
-    	openVideo($("#link").val());
-  	});
+    $(document).ready(function(){
+        VoaApp.init();
+    });
+}(jQuery, VoaApp));
 
-  	$("#close").click(function() {
-  		window.close();
-  	});
-});

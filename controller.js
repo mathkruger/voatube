@@ -1,21 +1,21 @@
 var VoaApp;
 
-(function($,VoaApp){
+(function(VoaApp){
     VoaApp = {
-        error        : $("#error-container"),
+        error        : document.getElementById('error-container'),
         videoYoutube : document.getElementById('video_youtube'),
-        formVideo    : $("#videoSubmit"),
-        inputLink    : $("#link"),
-        close        : $("#close")
+        formVideo    : document.getElementById('videoSubmit'),
+        inputLink    : document.getElementById('link'),
+        close        : document.getElementById('close')
     };
 
     VoaApp.listen = function() {
-        VoaApp.formVideo.submit(function(e){
+        VoaApp.formVideo.addEventListener('submit', function(e){
             e.preventDefault();
-            openVideo(VoaApp.inputLink.val());
+            openVideo(VoaApp.inputLink.value);
         });
 
-        VoaApp.close.click(function() {
+        VoaApp.close.addEventListener('click', function() {
             window.close();
         });
     };
@@ -29,16 +29,15 @@ var VoaApp;
         var result = link.match(regexYoutube);
 
         if (result && result[2].length == 11) {
-            VoaApp.error.hide();
+            VoaApp.error.style.display = 'none';
             VoaApp.videoYoutube.src = "https://www.youtube.com/embed/" + result[2] + "?autoplay=1";
         }
         else {
-            VoaApp.error.show();
+            VoaApp.error.style.display = 'block';
         }
     }
 
-    $(document).ready(function(){
+    document.addEventListener('DOMContentLoaded', function(){
         VoaApp.init();
     });
-}(jQuery, VoaApp));
-
+}(VoaApp));

@@ -2,15 +2,17 @@ body {
   background-color: black;
 }
 
+button {
+	-webkit-app-region: no-drag;
+}
+
 .tray-button {
-	float: right;
     width: 32px;
     height: 32px;
 	color: white;
 	background-color: #E62117;
 	transition: 0.2s ease;
 	border: none;
-  	-webkit-app-region: no-drag;
   	margin-left: 3px;
   	outline: none;
   	border-radius: 50%;

@@ -13,7 +13,7 @@
 chrome.app.runtime.onLaunched.addListener(function() {
     chrome.app.window.create('player.html', {
         id: "voaTube",
-        frame: "none",
+        // frame: "none",
         alwaysOnTop: true,
         innerBounds: {
             width: 400,

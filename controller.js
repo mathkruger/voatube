@@ -2,7 +2,7 @@ var VoaApp;
 
 (function ($, VoaApp) {
     VoaApp = {
-        videoYoutube: document.getElementById('video_youtube'),
+        videoContainer: document.getElementById('video_youtube'),
         formVideo: document.getElementById('videoSubmit'),
         formVideoList: document.getElementById('playlistSubmit'),
         inputLink: document.getElementById('link'),
@@ -68,7 +68,7 @@ var VoaApp;
             alert("Ocorreu um erro ao carregar os vídeos da playlist!");
         }
         else {
-            VoaApp.videoYoutube.src = "https://www.youtube.com/embed/" + primeiro + "?autoplay=1&playlist=" + geral;
+            VoaApp.videoContainer.src = "https://www.youtube.com/embed/" + primeiro + "?autoplay=1&playlist=" + geral;
 
             VoaApp.topBar.style.backgroundColor = '#404448';
             VoaApp.logo.src = 'assets/youtube.png';
@@ -84,7 +84,7 @@ var VoaApp;
 
         if (result && result[2].length == 11) {
 
-            VoaApp.videoYoutube.src = "https://www.youtube.com/embed/" + result[2] + "?autoplay=1";
+            VoaApp.videoContainer.src = "https://www.youtube.com/embed/" + result[2] + "?autoplay=1";
 
             VoaApp.topBar.style.backgroundColor = '#404448';
             //VoaApp.close.style.backgroundColor = '#E62117';
@@ -95,10 +95,10 @@ var VoaApp;
             if (link.indexOf('twitch.tv') !== -1) {
                 var channelTwitch = link.split('/').pop();
                 if(link.indexOf("video") < 0) {
-                    VoaApp.videoYoutube.src = "http://player.twitch.tv/?channel=" + channelTwitch;
+                    VoaApp.videoContainer.src = "http://player.twitch.tv/?channel=" + channelTwitch;
                 }
                 else {
-                    VoaApp.videoYoutube.src = "http://player.twitch.tv/?autoplay=false&video=" + channelTwitch;
+                    VoaApp.videoContainer.src = "http://player.twitch.tv/?autoplay=false&video=" + channelTwitch;
                 }
 
                 VoaApp.topBar.style.backgroundColor = '#4B367C';
@@ -107,14 +107,32 @@ var VoaApp;
             }
             else {
                 if(link.indexOf('mtv.com') > -1) {
-                    VoaApp.videoYoutube.src= link;
+                    VoaApp.videoContainer.src= link;
                 }
                 else {
                     if(link.indexOf('globo') > -1) {
-                        VoaApp.videoYoutube.src = link;
+                        VoaApp.videoContainer.src = link;
                     }
                     else {
-                        search(link);
+                        if(link.indexOf('primevideo') > -1) {
+                            VoaApp.videoContainer.src = link;
+
+                            VoaApp.topBar.style.backgroundColor = '#00A8E1';
+                            VoaApp.logo.src = 'assets/prime-logo.jpg';
+                            VoaApp.logo.style.display = 'block';
+                        }
+                        else {
+                            if(link.indexOf('netflix') > -1) {
+                                VoaApp.videoContainer.src = link;
+    
+                                VoaApp.topBar.style.backgroundColor = '#000';
+                                VoaApp.logo.src = 'assets/netflix.png';
+                                VoaApp.logo.style.display = 'block';
+                            }
+                            else {
+                                search(link);
+                            }
+                        }
                     }
                 }
             }

@@ -25,10 +25,6 @@ chrome.app.runtime.onLaunched.addListener(function() {
     function(win) {
         win.contentWindow.onload = function() {
             var webview = win.contentWindow.document.getElementById('video_youtube');
-<<<<<<< HEAD
-=======
-            console.log(webview);
->>>>>>> 142052f9f71fbf109b3d2a54b360c0a17822a1af
             webview.addEventListener('newwindow', function(e) {
                 e.preventDefault();
                 window.open(e.targetUrl);

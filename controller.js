@@ -130,7 +130,25 @@ var VoaApp;
                                 VoaApp.logo.style.display = 'block';
                             }
                             else {
-                                search(link);
+                                if(link.indexOf('nowonline') > -1) {
+                                    VoaApp.videoContainer.src = link;
+        
+                                    VoaApp.topBar.style.backgroundColor = '#000';
+                                    VoaApp.logo.src = 'assets/now.png';
+                                    VoaApp.logo.style.display = 'block';
+                                }
+                                else {
+                                    if(link.indexOf('disneyplus') > -1) {
+                                        VoaApp.videoContainer.src = link;
+            
+                                        VoaApp.topBar.style.backgroundColor = 'rgb(26, 29, 41)';
+                                        VoaApp.logo.src = 'assets/disney.png';
+                                        VoaApp.logo.style.display = 'block';
+                                    }
+                                    else {
+                                        search(link);
+                                    }
+                                }
                             }
                         }
                     }

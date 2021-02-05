@@ -101,6 +101,8 @@ var VoaApp;
                     VoaApp.videoContainer.src = "http://player.twitch.tv/?autoplay=false&video=" + channelTwitch;
                 }
 
+                VoaApp.videoContainer.src += "&parent=streamernews.example.com";
+
                 VoaApp.topBar.style.backgroundColor = '#4B367C';
                 VoaApp.logo.src = 'assets/twitch.png';
                 VoaApp.logo.style.display = 'block';

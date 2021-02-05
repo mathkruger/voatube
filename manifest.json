@@ -5,12 +5,6 @@
   "minimum_chrome_version": "23",
   "version": "0.1",
   "offline_enabled": false,
-  "content_security_policy": "script-src https://gdata.youtube.com/ 'self'",
-  "content_scripts": [
-    {
-      "matches": ["https://*.youtube.com/*"]
-    }
-  ],
   "app": {
     "background": {
       "scripts": ["main.js"]

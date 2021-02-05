@@ -96,6 +96,7 @@ var VoaApp;
                 var channelTwitch = link.split('/').pop();
                 if(link.indexOf("video") < 0) {
                     VoaApp.videoContainer.src = "http://player.twitch.tv/?channel=" + channelTwitch;
+                    createTwitchChatWindow(channelTwitch);
                 }
                 else {
                     VoaApp.videoContainer.src = "http://player.twitch.tv/?autoplay=false&video=" + channelTwitch;
@@ -191,6 +192,19 @@ var VoaApp;
                 $results.html(html);
             }
         });
+    }
+
+    function createTwitchChatWindow(channelTwitch) {
+        chrome.app.window.create('twitch-chat-popup/twitch-chat.html?canal=' + channelTwitch, {
+            id: "twitchChat",
+            alwaysOnTop: true,
+            innerBounds: {
+                width: 400,
+                height: 380,
+                minWidth: 200,
+                minHeight: 200
+            },
+        }, function(win) {});
     }
 
     document.addEventListener('DOMContentLoaded', function () {
